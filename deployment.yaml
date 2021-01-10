@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: stellar-diary
+  name: stellar-diary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stellar-diary
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: stellar-diary
+    spec:
+      containers:
+        - image: wellitonpaiva/stellar-diary
+          name: stellar-diary
+          resources:
+            limits:
+              memory: 1000Mi
+            requests:
+              memory: 200Mi
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: stellar-diary
+  name: stellar-diary
+spec:
+  ports:
+  - name: 8080-8080
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: stellar-diary
+  type: ClusterIP
+status:
+  loadBalancer: {}

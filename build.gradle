@@ -22,8 +22,17 @@ dependencies {
 	compile 'org.mongodb:mongodb-driver-reactivestreams:4.1.1'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	compile 'org.springdoc:springdoc-openapi-ui:1.5.2'
+	compile 'org.springframework.boot:spring-boot-starter-actuator:2.4.1'
 }
 
 test {
 	useJUnitPlatform()
+}
+
+jar {
+	enabled = true
+}
+
+bootJar {
+	mainClass = 'com.thescientist.stellardiary.StellarDiaryApplication'
 }
